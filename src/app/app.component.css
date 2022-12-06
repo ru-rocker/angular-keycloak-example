@@ -1,0 +1,54 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.tiny-spacer {
+    padding-left: 20px;
+}
+
+mat-sidenav-container {
+    height: 100%;
+}
+mat-sidenav-container mat-sidenav mat-nav-list .menu-item {
+    margin-left: 8px;
+}
+mat-sidenav-container mat-sidenav mat-nav-list .chevron-button {
+    transition: 300ms ease-in-out;
+    transform: rotate(0deg);
+}
+mat-sidenav-container mat-sidenav mat-nav-list .chevron-button.rotated {
+    transform: rotate(180deg);
+}
+
+mat-list-item .mat-icon {
+    vertical-align: middle;
+}
+
+.title {
+    text-decoration: none;
+    font-size: 100%;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    white-space: normal;
+}
+
+a {
+    text-decoration: none;
+    font-size: 75%;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    white-space: normal;
+}
+
+a:hover {
+    filter: brightness(0.75);
+}
+
+a:active {
+    filter: brightness(0.85);
+}
+
+button {
+    font-size: 100%;
+    min-width: min-content;
+}

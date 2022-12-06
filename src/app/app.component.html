@@ -1,0 +1,73 @@
+
+  <mat-toolbar color="primary">
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <a mat-button class="title" routerLink="/">
+      <span>{{ title }}</span>
+    </a>
+    <span class="tiny-spacer"></span>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button routerLink="/home">
+        <mat-icon mat-list-icon>home</mat-icon>
+        Home
+      </a>
+      <a mat-button *ngIf="isLoggedIn" routerLink="/org-chart">
+        <mat-icon mat-list-icon>supervisor_account</mat-icon>
+        Organization
+      </a>
+    </div>
+    <span class="spacer"></span>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button *ngIf="isLoggedIn" routerLink="/profile">
+        <mat-icon>person</mat-icon>
+        Profile
+      </a>
+      <a mat-button *ngIf="isLoggedIn" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        Logout
+      </a>
+      <a mat-button *ngIf="!isLoggedIn" routerLink="/login">
+        <mat-icon>login</mat-icon>
+        Login
+      </a>
+    </div>
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill class="example-container">
+
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+      <mat-nav-list>
+
+        <mat-list-item (click)="isExpanded =! isExpanded">
+          <mat-icon mat-list-icon class="chevron-button" [ngClass]="{ rotated: isExpanded }">chevron_right</mat-icon>
+        </mat-list-item>
+        <mat-list-item [routerLink]="'home'">
+          <mat-icon mat-list-icon>home</mat-icon>
+          <span *ngIf="isExpanded" class="menu-item">Home</span>
+        </mat-list-item>
+        <mat-list-item *ngIf="isLoggedIn" [routerLink]="'organization'">
+          <mat-icon mat-list-icon>supervisor_account</mat-icon>
+          <span *ngIf="isExpanded" class="menu-item">Organization</span>
+        </mat-list-item>
+        <mat-list-item *ngIf="isLoggedIn" [routerLink]="'profile'">
+          <mat-icon mat-list-icon>person</mat-icon>
+          <span *ngIf="isExpanded" class="menu-item">Profile</span>
+        </mat-list-item>
+        <mat-list-item *ngIf="isLoggedIn" (click)="logout()">
+          <mat-icon mat-list-icon>exit_to_app</mat-icon>
+          <span *ngIf="isExpanded" class="menu-item">Logout</span>
+        </mat-list-item>
+        <mat-list-item *ngIf="!isLoggedIn" [routerLink]="'login'">
+          <mat-icon mat-list-icon>login</mat-icon>
+          <span *ngIf="isExpanded" class="menu-item">Login</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>  
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
